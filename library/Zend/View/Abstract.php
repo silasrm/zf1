@@ -903,7 +903,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
     {
         if (in_array($this->_escape, array('htmlspecialchars', 'htmlentities'))) {
             if (is_array($var)) {
-                return implode(null, $var);
+                return call_user_func($this->_escape, array_shift($var), ENT_COMPAT, $this->_encoding);
             }
             
             return call_user_func($this->_escape, $var, ENT_COMPAT, $this->_encoding);
